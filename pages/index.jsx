@@ -1,41 +1,37 @@
-import Head from 'next/head';
+import { Button, Flex, Text } from '@chakra-ui/react';
 import { useAuth } from '../lib/auth';
-import styles from '../styles/Home.module.css';
+import { LogoIcon } from '../components/iconCreate';
+import Head from 'next/head';
+import FreePlanEmptyState from '@/components/FreePlanEmptyState';
 
 export default function Home() {
     const auth = useAuth();
     return (
-        <div className={styles.container}>
+        <Flex
+            as="main"
+            direction="column"
+            align="center"
+            justify="center"
+            h="100vh"
+        >
             <Head>
-                <title>Create Next App</title>
-                <link rel="icon" href="/favicon.ico" />
+                <title>Fast Feedback</title>
             </Head>
-
-            <main className={styles.main}>
-                <h1 className={styles.title}>
-                    Welcome to <a href="https://nextjs.org">Fast Feedback</a>
-                </h1>
-                <button onClick={() => auth.signinWithGithub()}>Sign In</button>
-                {auth?.user && (
-                    <button onClick={() => auth.signout()}>Sign Out</button>
-                )}
-                <div>{auth?.user?.email}</div>
-            </main>
-
-            <footer className={styles.footer}>
-                <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
+            <LogoIcon color="black" boxSize="64px" />
+            {auth?.user ? (
+                <Button onClick={() => auth.signout()}>Sign Out</Button>
+            ) : (
+                <Button
+                    mt={4}
+                    size="sm"
+                    onClick={() => auth.signinWithGithub()}
                 >
-                    Powered by{' '}
-                    <img
-                        src="/vercel.svg"
-                        alt="Vercel Logo"
-                        className={styles.logo}
-                    />
-                </a>
-            </footer>
-        </div>
+                    Sign In
+                </Button>
+            )}
+            <Text>
+                Current user: <code>{auth?.user?.email}</code>
+            </Text>
+        </Flex>
     );
 }
