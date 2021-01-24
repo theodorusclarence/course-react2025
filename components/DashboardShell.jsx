@@ -14,7 +14,7 @@ import AddSiteModal from './AddSiteModal';
 import { LogoIcon } from './iconCreate';
 
 const DashboardShell = ({ children }) => {
-    const auth = useAuth();
+    const { user, signout } = useAuth();
     return (
         <Flex flexDirection='column'>
             <Flex justifyContent='space-between' m={4} py={4} px={8}>
@@ -29,7 +29,7 @@ const DashboardShell = ({ children }) => {
                     <Link>Feedback</Link>
                 </Stack>
                 <Stack spacing={4} isInline alignItems='center'>
-                    {auth.user && (
+                    {user && (
                         <Button
                             variant='ghost'
                             mr={2}
@@ -38,7 +38,7 @@ const DashboardShell = ({ children }) => {
                             Log Out
                         </Button>
                     )}
-                    <Avatar size='sm' src={auth.user?.photoUrl} />
+                    <Avatar size='sm' src={user?.photoUrl} />
                 </Stack>
             </Flex>
             <Flex backgroundColor='gray.50' p={8} height='100vh'>
