@@ -41,7 +41,7 @@ const DashboardShell = ({ children }) => {
                     <Avatar size='sm' src={user?.photoUrl} />
                 </Stack>
             </Flex>
-            <Flex backgroundColor='gray.50' p={8} height='100vh'>
+            <Flex backgroundColor='gray.50' p={8} minH='100vh'>
                 <Flex
                     direction='column'
                     w='100%'

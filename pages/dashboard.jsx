@@ -7,8 +7,8 @@ import useSWR from 'swr';
 import { useAuth } from '../lib/auth';
 
 export default function Dashboard() {
-    const auth = useAuth();
-    const { data } = useSWR('/api/sites', fetcher);
+    const { user } = useAuth();
+    const { data } = useSWR(user ? ['/api/sites', user.token] : null, fetcher);
 
     if (!data) {
         return (
