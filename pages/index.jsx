@@ -8,22 +8,22 @@ export default function Home() {
     const auth = useAuth();
     return (
         <Flex
-            as="main"
-            direction="column"
-            align="center"
-            justify="center"
-            h="100vh"
+            as='main'
+            direction='column'
+            align='center'
+            justify='center'
+            h='100vh'
         >
             <Head>
                 <title>Fast Feedback</title>
             </Head>
-            <LogoIcon color="black" boxSize="64px" />
+            <LogoIcon color='black' boxSize='64px' />
             {auth?.user ? (
                 <Button onClick={() => auth.signout()}>Sign Out</Button>
             ) : (
                 <Button
                     mt={4}
-                    size="sm"
+                    size='sm'
                     onClick={() => auth.signinWithGithub()}
                 >
                     Sign In
