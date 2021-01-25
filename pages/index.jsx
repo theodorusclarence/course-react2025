@@ -1,6 +1,7 @@
-import { Button, Flex, Link, Text } from '@chakra-ui/react';
+import { Button, Flex, Link, Stack, Text } from '@chakra-ui/react';
 import { useAuth } from '../lib/auth';
 import { LogoIcon } from '../components/iconCreate';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import Head from 'next/head';
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
                 <title>Fast Feedback</title>
             </Head>
             <LogoIcon color='black' boxSize='42px' mb={2} />
-            <Text mb={4}>
+            <Text mb={4} maxW='30rem' p={4}>
                 <Text as='span' fontWeight='bold' display='inline'>
                     Fast Feedback
                 </Text>
@@ -58,13 +59,44 @@ export default function Home() {
                     View Dashboard
                 </Button>
             ) : (
-                <Button
-                    mt={4}
-                    size='sm'
-                    onClick={() => auth.signinWithGithub()}
-                >
-                    Sign In
-                </Button>
+                <Stack>
+                    <Button
+                        onClick={() => auth.signinWithGithub()}
+                        backgroundColor='gray.900'
+                        color='white'
+                        fontWeight='medium'
+                        mt={4}
+                        leftIcon={<FaGithub />}
+                        size='lg'
+                        _hover={{ bg: 'gray.700' }}
+                        _active={{
+                            bg: 'gray.800',
+
+                            transform: 'scale(0.95)',
+                        }}
+                    >
+                        Sign In with GitHub
+                    </Button>
+
+                    <Button
+                        onClick={() => auth.signinWithGoogle()}
+                        backgroundColor='white'
+                        color='gray.900'
+                        variant='outline'
+                        fontWeight='medium'
+                        leftIcon={<FaGoogle />}
+                        mt={4}
+                        size='lg'
+                        _hover={{ bg: 'gray.100' }}
+                        _active={{
+                            bg: 'gray.100',
+
+                            transform: 'scale(0.95)',
+                        }}
+                    >
+                        Sign in with Google
+                    </Button>
+                </Stack>
             )}
         </Flex>
     );

@@ -22,7 +22,12 @@ const SiteTable = ({ sites }) => {
                         <Td>{site.link}</Td>
                         <Td>
                             <Link href={`/p/${site.id}`}>
-                                <ChakraLink>View Feedback</ChakraLink>
+                                <ChakraLink
+                                    fontWeight='medium'
+                                    color='blue.500'
+                                >
+                                    View Feedback
+                                </ChakraLink>
                             </Link>
                         </Td>
                         <Td>{format(parseISO(site.createdAt), 'PPpp')}</Td>

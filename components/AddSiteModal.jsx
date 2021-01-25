@@ -35,7 +35,8 @@ export default function AddSiteModal({ children }) {
             link,
         };
 
-        createSite(newSite);
+        const { id } = createSite(newSite);
+
         toast({
             title: 'Account created.',
             description: "We've added your site.",
@@ -45,9 +46,9 @@ export default function AddSiteModal({ children }) {
         });
         mutate(
             ['/api/sites', auth.user.token],
-            async (data) => {
-                return { sites: [...data.sites, newSite] };
-            },
+            async (data) => ({
+                sites: [{ id, ...newSite }, ...data.sites],
+            }),
             false
         );
         onClose();

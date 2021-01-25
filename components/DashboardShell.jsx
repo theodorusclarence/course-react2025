@@ -1,16 +1,12 @@
 import { useAuth } from '@/lib/auth';
+import Link from 'next/link';
 import {
     Flex,
-    Link,
+    Link as ChakraLink,
     Stack,
     Avatar,
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    Heading,
     Button,
 } from '@chakra-ui/react';
-import AddSiteModal from './AddSiteModal';
 import { LogoIcon } from './iconCreate';
 
 const DashboardShell = ({ children }) => {
@@ -24,9 +20,17 @@ const DashboardShell = ({ children }) => {
                     isInline
                     alignItems='center'
                 >
-                    <LogoIcon color='black' boxSize='24px' />
-                    <Link>Sites</Link>
-                    <Link>Feedback</Link>
+                    <Link href='/'>
+                        <ChakraLink>
+                            <LogoIcon color='black' boxSize='24px' />
+                        </ChakraLink>
+                    </Link>
+                    <Link href='/dashboard'>
+                        <ChakraLink>Sites</ChakraLink>
+                    </Link>
+                    <Link href='/feedback'>
+                        <ChakraLink>Feedback</ChakraLink>
+                    </Link>
                 </Stack>
                 <Stack spacing={4} isInline alignItems='center'>
                     {user && (
@@ -49,15 +53,6 @@ const DashboardShell = ({ children }) => {
                     ml='auto'
                     mr='auto'
                 >
-                    <Breadcrumb>
-                        <BreadcrumbItem>
-                            <BreadcrumbLink>Sites</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <Flex justify='space-between'>
-                            <Heading mb={4}>My Sites</Heading>
-                            <AddSiteModal>+ Add Site</AddSiteModal>
-                        </Flex>
-                    </Breadcrumb>
                     {children}
                 </Flex>
             </Flex>
