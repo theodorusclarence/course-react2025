@@ -16,14 +16,18 @@ const SiteTable = ({ sites }) => {
                 </Tr>
             </thead>
             <tbody>
-                {console.log(sites)}
                 {sites.map((site) => (
-                    <Box as='tr' key={site.link}>
+                    <Box as='tr' key={site.id}>
                         <Td fontWeight='medium'>{site.site}</Td>
                         <Td>{site.link}</Td>
                         <Td>
                             <Link href={`/p/${site.id}`}>
-                                <ChakraLink>View Feedback</ChakraLink>
+                                <ChakraLink
+                                    fontWeight='medium'
+                                    color='blue.500'
+                                >
+                                    View Feedback
+                                </ChakraLink>
                             </Link>
                         </Td>
                         <Td>{format(parseISO(site.createdAt), 'PPpp')}</Td>

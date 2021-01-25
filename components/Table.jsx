@@ -42,6 +42,7 @@ export const Table = (props) => {
             as='table'
             textAlign='left'
             backgroundColor='white'
+            w='100%'
             ml={0}
             mr={0}
             borderRadius={8}
