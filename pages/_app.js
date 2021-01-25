@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import { ProvideAuth } from '../lib/auth';
-import '../styles/globals.css';
-
-function MyApp({ Component, pageProps }) {
-    return (
-        <ProvideAuth>
-            <Component {...pageProps} />
-        </ProvideAuth>
-=======
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import { AuthProvider } from '@/lib/auth';
 import '@/styles/globals.css';
@@ -44,7 +34,6 @@ function MyApp({ Component, pageProps }) {
                 <Component {...pageProps} />
             </AuthProvider>
         </ChakraProvider>
->>>>>>> change-headline
     );
 }
 
